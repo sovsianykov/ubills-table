@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+ table {
+   padding: 0;
+   border-spacing: 1px ;
+ }
+th  {
+  border: 1px solid #8e8c8c;
+  height: 30px;
+  padding: 5px;
+  cursor: pointer;
+  color: black;
+  letter-spacing: .05em;
+  background-color: #f5f1f1;
+  transition: 0.5s ease-in-out;
+  &:hover {
+    color: black;
+    background-color: #fff;
+  }
+
+
+}
