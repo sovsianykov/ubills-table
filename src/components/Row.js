@@ -1,15 +1,15 @@
 import React from 'react';
 
-const Row = () => {
+const Row = ({ row }) => {
     return (
         <>
             <tr>
-                <td>january</td>
-                <td> 1234</td>
-                <td>5678</td>
-                <td>gh kv/hh</td>
-                <td>80000</td>
-                <td>05/10/21</td>
+                <td>{row.name}</td>
+                <td>{row.prev} </td>
+                <td>{row.current}</td>
+                <td>{row.tariff}</td>
+                <td>{row.sum} UAH</td>
+                <td>{row.date}</td>
             </tr>
         </>
     );

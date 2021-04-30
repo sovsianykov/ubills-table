@@ -1,9 +1,15 @@
 export const styles = {
+      container : {
+          width : '80%',
+          margin : '100px auto'
+
+
+      },
     root : {
-        width: "80%",
+        width: "100%",
         display : "flex",
         flexDirection : "column",
-        margin : '100px auto'
+
 
     },
     table : {
@@ -12,7 +18,7 @@ export const styles = {
     },
     cell : {
         alignItems : 'center',
-        justifyContent : 'center'
+        justifyContent : 'center',
     },
     navbar : {
         backgroundColor : "firebrick",
@@ -26,5 +32,34 @@ export const styles = {
         fontWeight : '300',
         letterSpacing : '.1rem'
 
+    },
+    input : {
+        height : 30,
+        display : 'inline-block',
+        margin: '5px 0 ',
+        width : '50px',
+        padding: '0  10px',
+        border: "1px solid #ddd",
+        borderRadius: " 5px"
+    },
+    btn_1 : {
+        margin: '5px  0 ',
+        width : '100px',
+        height : 30,
+    },
+    input__Block : {
+          maxWidth : "500px",
+          height : '60px',
+          display :'flex',
+          justifyContent: 'space-around',
+           alignItems :'center',
+          boxShadow : '0 0 2px #ADADAD',
+        borderRadius: " 5px",
+        marginTop :10,
+        marginLeft : 'auto'
+
+
+
     }
+
 }
