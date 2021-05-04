@@ -1,53 +1,38 @@
-import React, {useCallback,  useRef, useState} from "react";
-import { gDate } from "../../components/getDate";
+import React, {useCallback, useRef} from "react";
 import TableComponent from "../../components/TableComponent";
 import { Button } from "@material-ui/core";
 import { styles } from '../../components/style';
+import {useDispatch, useSelector} from "react-redux";
+import {getElectricity} from "../../redux/actions";
+import {GetNextMonth} from "../../components/getNextMonth";
 
 
 
 
 
 const Electricity = () => {
-  const initialElMonths = [
-    {
-      id: 0,
-      name: 0,
-      prev: 0,
-      current: 0,
-      tariff: 0,
-      sum: 0,
-      date: gDate(),
-    },
-  ];
+  const dispatch = useDispatch();
   const inputValue = useRef(null);
   const inputTariff = useRef(null);
-  const [elMonths, setElMonths] = useState( initialElMonths);
+  let prevMonth =useSelector(state => state.electricity[state.electricity.length-1])
+  console.log(prevMonth)
   const clickHandler = useCallback(()=> {
-    let prevMonth = elMonths[elMonths.length - 1];
-    let newElMonth = [{
-      id: elMonths.length + 1,
-      name: elMonths.length + 1,
-      prev: prevMonth.current,
-      tariff: `${Number(inputTariff.current.value)}`,
-      current: Number(inputValue.current.value),
-      sum: Math.floor( (Number(inputValue.current.value) - prevMonth.current) * prevMonth.tariff),
-      date: gDate(),
-    }];
+    const newMonth = GetNextMonth(inputValue,inputTariff, prevMonth)
+    dispatch(getElectricity(newMonth))
+  }, [dispatch,prevMonth ]);
 
-    setElMonths(elMonths => elMonths.concat(newElMonth))
-  }, [elMonths]);
-  console.log(elMonths)
+  const  rows = useSelector(state=> state.electricity)
+  // if (rows === 2) { rows.shift()}
   return (
       <>
     <div style={styles.root}>
       <h2>Electricity</h2>
-      <TableComponent rows={elMonths} />
+      <TableComponent rows={rows} />
     </div>
      <div style={styles.input__Block}>
        <input type="text" ref={inputValue} style={styles.input} defaultValue=  '0'/> kWt
        <input type="text" ref={inputTariff} style={styles.input} defaultValue=  '1.68'/>uah.kWt/hr
-       <Button variant="outlined" onClick={clickHandler} style={styles.btn_1}>
+       <Button variant="contained" onClick={clickHandler} style={styles.btn_1}>
          Submit
        </Button>
      </div>

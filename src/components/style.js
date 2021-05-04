@@ -40,7 +40,9 @@ export const styles = {
         width : '50px',
         padding: '0  10px',
         border: "1px solid #ddd",
-        borderRadius: " 5px"
+        borderRadius: " 5px",
+        fontSize : '18px',
+
     },
     btn_1 : {
         margin: '5px  0 ',
